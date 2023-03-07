@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='ERP_BACKEND')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="xJA41xWORKCENTER_CDS" xml:lang="de" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="xJA41xWC_WITH_SHIFT_FOR_TODAYType" sap:label="Liefert WC Schichten für" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CapacityInternalID"/>
+                    <PropertyRef Name="CapacityActiveVersion"/>
+                    <PropertyRef Name="ValidityEndDate"/>
+                    <PropertyRef Name="WeekDay"/>
+                    <PropertyRef Name="AvailableCapacityShift"/>
+                </Key>
+                <Property Name="CapacityInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="ID Kapazität" sap:quickinfo="ID der Kapazität"/>
+                <Property Name="CapacityActiveVersion" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:label="Version" sap:quickinfo="Version des Kapazitätsangebotes"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date"/>
+                <Property Name="WeekDay" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="NonNegative" sap:label="Wochentag"/>
+                <Property Name="AvailableCapacityShift" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="NonNegative" sap:label="Schichtnummer" sap:quickinfo="Schichtnummer des Kapazitätsangebotes"/>
+                <Property Name="ShiftName" Type="Edm.String" MaxLength="15" sap:label="Schichtdefin. Text" sap:quickinfo="Text für Schichtdefinition"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="tprog" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Schichtdefinition"/>
+                <Property Name="ShiftGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Schichtgruppierung" sap:quickinfo="Gruppierung für Schichtdefinitionen und Schichtprogramme"/>
+                <Property Name="ShiftStartTime" Type="Edm.Time" Precision="0"/>
+                <Property Name="ShiftEndTime" Type="Edm.Time" Precision="0"/>
+                <Property Name="ShiftStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="ShiftEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="BreakDurationInSeconds" Type="Edm.Int32"/>
+                <Property Name="OperatingDurationInSeconds" Type="Edm.Int32" sap:label="Einsatzdauer" sap:quickinfo="Einsatzdauer in Sekunden"/>
+                <Property Name="TotOperatingDurationInSeconds" Type="Edm.Int32" sap:label="Einsatzdauer" sap:quickinfo="Einsatzdauer in Sekunden"/>
+                <Property Name="UtilizationPercent" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Nutzungsgrad" sap:quickinfo="Nutzungsgrad in Prozent"/>
+                <Property Name="SingleCapacity" Type="Edm.Int16" sap:label="Anzahl Einzelkapaz." sap:quickinfo="Anzahl Einzelkapazitäten"/>
+            </EntityType>
+            <EntityType Name="xJA41xWorkCenterType" sap:label="Work Center" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WorkCenterInternalID"/>
+                    <PropertyRef Name="WorkCenterTypeCode"/>
+                </Key>
+                <Property Name="WorkCenterInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Objekt-ID" sap:quickinfo="Objekt-ID der Ressource"/>
+                <Property Name="WorkCenterTypeCode" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Objekttyp" sap:quickinfo="Objekttypen der CIM-Ressource"/>
+                <Property Name="WorkCenter" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Arbeitsplatz"/>
+                <Property Name="WorkCenterIsToBeDeleted" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Löschvormerkung" sap:quickinfo="Arbeitsplatz Löschvormerkung"/>
+                <Property Name="WorkCenterIsLocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Gesperrt" sap:quickinfo="Kennzeichen: Arbeitsplatz gesperrt"/>
+                <Property Name="WorkCenterIsMntndForCosting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Kosterechnung" sap:quickinfo="Kennzeichen: Arbeitsplatz für Kostenrechnung gepflegt"/>
+                <Property Name="WorkCenterIsMntndForScheduling" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Terminierung" sap:quickinfo="Kennzeichen: Arbeitsplatz für Terminierung gepflegt"/>
+                <Property Name="NumberOfConfirmationSlips" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Anz. Rückmeldeschei." sap:quickinfo="Anzahl Rückmeldescheine"/>
+                <Property Name="AdvancedPlanningIsSupported" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Erweiterte Planung" sap:quickinfo="Kennzeichen für erweiterte Planung"/>
+                <Property Name="CapaActiveVersion" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Aktive Version" sap:quickinfo="Aktive Version des Kapazitätsangebotes"/>
+                <Property Name="WorkcenterText" Type="Edm.String" MaxLength="40" sap:label="Arbeitsplatztext" sap:quickinfo="Text zum Arbeitsplatz"/>
+                <Property Name="WorkCenterCategoryCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Arbeitsplatzart"/>
+                <Property Name="WorkCenterLocation" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Standort" sap:quickinfo="Standort des Arbeitsplatz"/>
+                <Property Name="WorkCenterLocationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Ortsgruppe"/>
+                <Property Name="WorkCenterUsage" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Planverwendung" sap:quickinfo="Planverwendung eines Arbeitsplatzes im Arbeitsplan"/>
+                <Property Name="WorkCenterResponsible" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Verantwortlicher" sap:quickinfo="Arbeitsplatzverantwortlicher"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Werk"/>
+                <Property Name="SupplyArea" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="ProdVersorgBereich" sap:quickinfo="Produktionsversorgungsbereich"/>
+                <Property Name="CapacityInternalID" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="ID Kapazität" sap:quickinfo="ID der Kapazität"/>
+                <Property Name="MachineType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Maschinentyp"/>
+                <Property Name="OperationControlProfile" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Steuerungsprofil" sap:quickinfo="Vorgangssteuerungsprofil"/>
+                <Property Name="MatlCompIsMarkedForBackflush" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Retrograde Entnahme" sap:quickinfo="Kennzeichen: Retrograde Entnahme"/>
+                <Property Name="WorkCenterSetupType" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Rüstart" sap:quickinfo="Arbeitsplatzrüstart"/>
+                <Property Name="FreeDefinedTableFieldSemantic" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Frei definiert. Feld" sap:quickinfo="ID der Semantik des frei definierten Tabellenfeldes"/>
+                <Property Name="ObjectInternalID" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="Objektnummer"/>
+                <Property Name="StandardTextInternalID" Type="Edm.String" MaxLength="7" sap:display-format="UpperCase" sap:label="Vorgang - Textvorlagen-ID" sap:quickinfo="Vorgang - interne ID Textvorlage"/>
+                <Property Name="EmployeeWageType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Mitarbeiterlohnart"/>
+                <Property Name="EmployeeWageGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Mitarbeiterlohngr." sap:quickinfo="Mitarbeiterlohngruppe"/>
+                <Property Name="EmployeeSuitability" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Mitarbeitereignung"/>
+                <Property Name="NumberOfTimeTickets" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Lohnscheine Anzahl" sap:quickinfo="Anzahl Lohnscheine"/>
+                <Property Name="PlanVersion" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Planvariante"/>
+                <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Gültig-ab-Datum"/>
+                <Property Name="ValidityEndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Gültig-bis-Datum"/>
+                <Property Name="StandardTextIDIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Textvorlage referen." sap:quickinfo="Kennzeichen: Textvorlagen-ID wird referenziert"/>
+                <Property Name="EmployeeWageTypeIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Lohnart referenziert" sap:quickinfo="Kennzeichen: Lohnart wird referenziert"/>
+                <Property Name="NmbrOfTimeTicketsIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Lohnscheinanz. ref." sap:quickinfo="Kennzeichen: Anzahl Lohnscheine wird referenziert"/>
+                <Property Name="EmployeeWageGroupIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Lohngruppe referenz." sap:quickinfo="Kennzeichen: Lohngruppe wird referenziert"/>
+                <Property Name="EmplSuitabilityIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Eignung referenziert" sap:quickinfo="Kennzeichen: Eignung wird referenziert"/>
+                <Property Name="WorkCenterSetpTypeIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="RüstartSchl. refer." sap:quickinfo="Kennzeichen: Rüstartenschlüssel wird referenziert"/>
+                <Property Name="OpControlProfileIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="SteuerProfil refer." sap:quickinfo="Kennzeichen: Steuerungsprofil wird referenziert"/>
+                <Property Name="NumberOfConfSlipsIsReferenced" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="RückmScheinanz. ref." sap:quickinfo="Kennzeichen: Anzahl Rückmeldescheine wird referenziert"/>
+                <Property Name="WorkCenterStdQueueDurnUnit" Type="Edm.String" MaxLength="3" sap:label="Einh. nor. Wartezeit" sap:quickinfo="Einheit der normalen Wartezeit" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterStandardQueueDurn" Type="Edm.Decimal" Precision="9" Scale="3" sap:label="Normale Wartezeit"/>
+                <Property Name="WorkCenterMinimumQueueDurnUnit" Type="Edm.String" MaxLength="3" sap:label="Einh. min. Wartezeit" sap:quickinfo="Einheit der minimalen Wartezeit" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterMinimumQueueDuration" Type="Edm.Decimal" Precision="9" Scale="3" sap:label="Minimale Wartezeit"/>
+                <Property Name="WorkCenterStandardWorkQtyUnit1" Type="Edm.String" MaxLength="3" sap:label="Arbeits-ME 1" sap:quickinfo="Standardarbeitsmengeneinheit 1" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterStandardWorkQtyUnit2" Type="Edm.String" MaxLength="3" sap:label="Arbeits-ME 2" sap:quickinfo="Standardarbeitsmengeneinheit 2" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterStandardWorkQtyUnit3" Type="Edm.String" MaxLength="3" sap:label="Arbeits-ME 3" sap:quickinfo="Standardarbeitsmengeneinheit 3" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterStandardWorkQtyUnit4" Type="Edm.String" MaxLength="3" sap:label="Arbeits-ME 4" sap:quickinfo="Standardarbeitsmengeneinheit 4" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterStandardWorkQtyUnit5" Type="Edm.String" MaxLength="3" sap:label="Arbeits-ME 5" sap:quickinfo="Standardarbeitsmengeneinheit 5" sap:semantics="unit-of-measure"/>
+                <Property Name="WorkCenterStandardWorkQtyUnit6" Type="Edm.String" MaxLength="3" sap:label="Arbeits-ME 6" sap:quickinfo="Standardarbeitsmengeneinheit 6" sap:semantics="unit-of-measure"/>
+                <Property Name="StandardWorkQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Arbeitseinheit" sap:quickinfo="Maßeinheit der Arbeit" sap:semantics="unit-of-measure"/>
+                <Property Name="LaborTrackingIsRequired" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Arbeitszeiterfassung" sap:quickinfo="Gibt an, ob Arbeitszeiterfass. für Ausführung erforderl. ist"/>
+                <Property Name="SystDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <NavigationProperty Name="to_CapacityShift" Relationship="xJA41xWORKCENTER_CDS.assoc_F1DC3A215994D29F696915981E999EA2" FromRole="FromRole_assoc_F1DC3A215994D29F696915981E999EA2" ToRole="ToRole_assoc_F1DC3A215994D29F696915981E999EA2"/>
+                <NavigationProperty Name="to_StdShift" Relationship="xJA41xWORKCENTER_CDS.assoc_94D7635D25F051B40B6B4548CBB7700C" FromRole="FromRole_assoc_94D7635D25F051B40B6B4548CBB7700C" ToRole="ToRole_assoc_94D7635D25F051B40B6B4548CBB7700C"/>
+            </EntityType>
+            <EntityType Name="xJA41xWorkcenter_Std_CapaType" sap:label="Std. Sifts" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CapacityInternalID"/>
+                </Key>
+                <Property Name="CapacityInternalID" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:text="CapacityInternalID_Text" sap:label="ID Kapazität" sap:quickinfo="ID der Kapazität"/>
+                <Property Name="CapacityInternalID_Text" Type="Edm.String" MaxLength="40" sap:label="Text Kapazität" sap:quickinfo="Kapazitätskurztext" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CapacityActiveVersion" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Aktive Version" sap:quickinfo="Aktive Version des Kapazitätsangebotes"/>
+                <Property Name="ShiftName" Type="Edm.String" MaxLength="9"/>
+                <Property Name="ShiftGroup" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="to_ShiftGrouping/ShiftGrouping_Text" sap:label="Schichtgruppierung" sap:quickinfo="Gruppierung für Schichtdefinitionen und Schichtprogramme" sap:value-list="standard"/>
+                <Property Name="ShiftStartTime" Type="Edm.Time" Precision="0"/>
+                <Property Name="ShiftEndTime" Type="Edm.Time" Precision="0"/>
+                <Property Name="ShiftStartDate" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ShiftEndDate" Type="Edm.String" MaxLength="1"/>
+                <Property Name="BreakDurationInSeconds" Type="Edm.Int32" sap:label="Pausendauer" sap:quickinfo="Kumulierte Pausenzeit in Sekunden (intern)"/>
+                <Property Name="OperatingDurationInSeconds" Type="Edm.Int32"/>
+                <Property Name="TotOperatingDurationInSeconds" Type="Edm.Int32"/>
+                <Property Name="UtilizationPercent" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Nutzungsgrad" sap:quickinfo="Nutzungsgrad in Prozent"/>
+                <Property Name="SingleCapacity" Type="Edm.Int16" sap:label="Anzahl Einzelkapaz." sap:quickinfo="Anzahl Einzelkapazitäten"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="to_Plant/PlantName" sap:label="Werk" sap:value-list="standard"/>
+                <Property Name="Capacity" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Kapazität" sap:quickinfo="Name der Kapazität"/>
+                <Property Name="CapacityCategoryCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="to_CapacityCategory/CapacityCategoryCode_Text" sap:label="Kapazitätsart" sap:value-list="standard"/>
+                <Property Name="CapacityIsFinite" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Kapazitätsterminier." sap:quickinfo="Kennzeichen: Kapazität relevant für Kapazitätsterminierung"/>
+                <Property Name="CapacityIsPooled" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Poolkapazität" sap:quickinfo="Kennzeichen Poolkapazität"/>
+                <Property Name="CapacityHasIndivCapacities" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Hat Einzelkapaz." sap:quickinfo="Hat Einzelkapazitäten"/>
+                <Property Name="CapacityIsExcldFrmLongTermPlng" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Keine Langfristplan." sap:quickinfo="Kennzeichen: Kapazität ausgeschlossen von Langfristplanung"/>
+                <Property Name="CapacityResponsiblePlanner" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="to_CapacityResponsiblePlanner/CapacityResponsiblePlanner_Text" sap:label="Kapazitätsplaner" sap:quickinfo="Verantwortliche Kapazitätsplanergruppe" sap:value-list="standard"/>
+                <Property Name="CapIsUsedInMultiOperations" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Von mehreren Vorgängen verwendbar" sap:quickinfo="Kennzeichen: Kapazität von mehreren Vorgängen verwendbar"/>
+                <Property Name="CapOverloadThresholdInPercent" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Überlast (in %)" sap:quickinfo="Überlast"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:text="to_FactoryCalendar/FactoryCalendar_Text" sap:label="Fabrikkalender" sap:quickinfo="Fabrikkalender-ID" sap:value-list="standard"/>
+                <Property Name="CapacityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Datum/Uhrzeit letzte Kapazitätsänderung" sap:quickinfo="Datum/Uhrzeit der letzten Kapazitätsänderung"/>
+                <NavigationProperty Name="to_CapacityCategory" Relationship="xJA41xWORKCENTER_CDS.assoc_1A491DDC247A6B5B69F2D308B91AC05D" FromRole="FromRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D" ToRole="ToRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D"/>
+                <NavigationProperty Name="to_CapacityResponsiblePlanner" Relationship="xJA41xWORKCENTER_CDS.assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA" FromRole="FromRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA" ToRole="ToRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA"/>
+                <NavigationProperty Name="to_FactoryCalendar" Relationship="xJA41xWORKCENTER_CDS.assoc_547E6364F6DFEAE760C53818D883419F" FromRole="FromRole_assoc_547E6364F6DFEAE760C53818D883419F" ToRole="ToRole_assoc_547E6364F6DFEAE760C53818D883419F"/>
+                <NavigationProperty Name="to_Plant" Relationship="xJA41xWORKCENTER_CDS.assoc_110C45A79C5EADA2E01509EF6424FB68" FromRole="FromRole_assoc_110C45A79C5EADA2E01509EF6424FB68" ToRole="ToRole_assoc_110C45A79C5EADA2E01509EF6424FB68"/>
+                <NavigationProperty Name="to_ShiftGrouping" Relationship="xJA41xWORKCENTER_CDS.assoc_EE45532EAF8409F2815C0579AEDA8FE4" FromRole="FromRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4" ToRole="ToRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4"/>
+            </EntityType>
+            <EntityType Name="I_AddressType" sap:label="Adresse" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AddressID"/>
+                </Key>
+                <Property Name="AddressID" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Adressnummer"/>
+                <Property Name="AddressUUID" Type="Edm.Guid" sap:label="Adress-UUID" sap:quickinfo="In der Adresse verwendete UUID"/>
+                <Property Name="CareOfName" Type="Edm.String" MaxLength="40" sap:label="c/o" sap:quickinfo="c/o-Name"/>
+                <Property Name="AdditionalStreetSuffixName" Type="Edm.String" MaxLength="40" sap:label="Straße 5"/>
+                <Property Name="CorrespondenceLanguage" Type="Edm.String" MaxLength="2" sap:label="Sprachenschlüssel"/>
+                <Property Name="PrfrdCommMediumType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Kommunikationsart" sap:quickinfo="Kommunikationsart (Schlüssel) (Business Address Services)"/>
+                <Property Name="POBox" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postfach"/>
+                <Property Name="POBoxIsWithoutNumber" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Postfach ohne Nr." sap:quickinfo="Kennzeichen: Postfachangabe ohne Nummer"/>
+                <Property Name="POBoxPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PLZ Postfach" sap:quickinfo="Postleitzahl des Postfachs"/>
+                <Property Name="POBoxLobbyName" Type="Edm.String" MaxLength="40" sap:label="Postfachstation" sap:quickinfo="Postfachstation (PO Box Lobby)"/>
+                <Property Name="POBoxDeviatingCityName" Type="Edm.String" MaxLength="40" sap:label="Postfach-Ort" sap:quickinfo="Ort des Postfachs"/>
+                <Property Name="POBoxDeviatingRegion" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region zum Postfach" sap:quickinfo="Region zum Postfach (Bundesstaat, Bundesland, Provinz, ...)"/>
+                <Property Name="POBoxDeviatingCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Land/Reg. Postfach" sap:quickinfo="Land/Region zum Postfach"/>
+                <Property Name="DeliveryServiceTypeCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Zustelldienstart" sap:quickinfo="Art des Zustelldienstes"/>
+                <Property Name="DeliveryServiceNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Zustelldienstnummer" sap:quickinfo="Nummer des Zustelldienstes"/>
+                <Property Name="AddressTimeZone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Zeitzone" sap:quickinfo="Zeitzone der Adresse"/>
+                <Property Name="CityFileTestStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Prüfstatus/Ortsdatei" sap:quickinfo="Prüfstatus bezüglich Ortsdatei"/>
+                <Property Name="AddressStreetUnusable" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Unzustellbarkeit" sap:quickinfo="Kennzeichen für Unzustellbarkeit bei der Straßenadresse"/>
+                <Property Name="AddressPostBoxUnusable" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Unzustellbarkeit" sap:quickinfo="Kennzeichen für Unzustellbarkeit bei Postfachadresse"/>
+                <Property Name="FullName" Type="Edm.String" MaxLength="80" sap:label="Vollständiger Name" sap:quickinfo="Vollst. Name eines Beteiligten (GP, OrgEinheit, DokAdresse)"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="Ort"/>
+                <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="Ortsteil"/>
+                <Property Name="CityCode" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Ortsnummer" sap:quickinfo="Codierung des Orts für Orts- und Straßendatei"/>
+                <Property Name="HomeCityName" Type="Edm.String" MaxLength="40" sap:label="Abw. Wohnort" sap:quickinfo="Wohnort (abweichend vom postalischen Ort)"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postleitzahl" sap:quickinfo="Postleitzahl des Orts"/>
+                <Property Name="CompanyPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Firmenpostleitzahl" sap:quickinfo="Postleitzahl der Firma (bei Großkunden)"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:label="Straße"/>
+                <Property Name="StreetPrefixName" Type="Edm.String" MaxLength="40" sap:label="Straße 2"/>
+                <Property Name="AdditionalStreetPrefixName" Type="Edm.String" MaxLength="40" sap:label="Straße 3"/>
+                <Property Name="StreetSuffixName" Type="Edm.String" MaxLength="40" sap:label="Straße 4"/>
+                <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:label="Hausnummer"/>
+                <Property Name="HouseNumberSupplementText" Type="Edm.String" MaxLength="10" sap:label="Zusatz" sap:quickinfo="Ergänzung zur Hausnummer"/>
+                <Property Name="Building" Type="Edm.String" MaxLength="20" sap:label="Gebäudekürzel" sap:quickinfo="Gebäude (Nummer oder Kürzel)"/>
+                <Property Name="Floor" Type="Edm.String" MaxLength="10" sap:label="Stockwerk" sap:quickinfo="Stockwerk im Gebäude"/>
+                <Property Name="RoomNumber" Type="Edm.String" MaxLength="10" sap:label="Raumnummer" sap:quickinfo="Nummer einer Wohnung, eines Appartements oder eines Raumes"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Länder-/RegSchlüssel" sap:quickinfo="Länder-/Regionenschlüssel"/>
+                <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (Bundesstaat, Bundesland, Provinz, Grafschaft)"/>
+                <Property Name="County" Type="Edm.String" MaxLength="40" sap:label="Bezirk" sap:quickinfo="Bezirk (US: County)"/>
+                <Property Name="CountyCode" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Kreiscode" sap:quickinfo="Kreiscode für Kreis"/>
+                <Property Name="TownshipCode" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Stadtcode" sap:quickinfo="Stadtcode für Stadt"/>
+                <Property Name="TownshipName" Type="Edm.String" MaxLength="40" sap:label="Stadt"/>
+                <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Anrede" sap:quickinfo="Anredeschlüssel"/>
+                <Property Name="BusinessPartnerName1" Type="Edm.String" MaxLength="40" sap:label="Name" sap:quickinfo="Name 1"/>
+                <Property Name="BusinessPartnerName2" Type="Edm.String" MaxLength="40" sap:label="Name 2"/>
+                <Property Name="Nation" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Adressversion" sap:quickinfo="Versionskennzeichen für internationale Adressen"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Telefon" sap:quickinfo="Erste Telefon-Nr.: Vorwahl + Anschluß"/>
+                <Property Name="FaxNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Fax" sap:quickinfo="Erste Fax-Nr.: Vorwahl + Anschluss"/>
+                <Property Name="SearchTerm1" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Suchbegriff 1"/>
+                <Property Name="SearchTerm2" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Suchbegriff 2"/>
+                <Property Name="StreetSearch" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Straße" sap:quickinfo="Straßenname in Großbuchstaben für Suchhilfe"/>
+                <Property Name="CitySearch" Type="Edm.String" MaxLength="25" sap:display-format="UpperCase" sap:label="Ort" sap:quickinfo="Ortsname in Großbuchstaben für Suchhilfe"/>
+                <Property Name="BusinessPartnerName3" Type="Edm.String" MaxLength="40" sap:label="Name 3"/>
+                <Property Name="BusinessPartnerName4" Type="Edm.String" MaxLength="40" sap:label="Name 4"/>
+                <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Steuerstandort"/>
+                <Property Name="TransportZone" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transportzone" sap:quickinfo="Transportzone, in die bzw. aus der geliefert wird"/>
+                <Property Name="AddressCityPostBoxCode" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Ortsnummer" sap:quickinfo="Codierung des Orts zum Postfach (Ortsdatei)"/>
+                <Property Name="Person" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Personennummer"/>
+            </EntityType>
+            <EntityType Name="I_CapacityCategoryType" sap:label="Kapazitätsart" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CapacityCategoryCode"/>
+                </Key>
+                <Property Name="CapacityCategoryCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CapacityCategoryCode_Text" sap:label="Kapazitätsart"/>
+                <Property Name="CapacityCategoryCode_Text" Type="Edm.String" MaxLength="20" sap:label="Bezeichnung Art" sap:quickinfo="Bezeichnung einer Kapazitätsart" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_CapacityRespPlannerType" sap:label="Verantwortlicher Kapazitätsplaner" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CapacityResponsiblePlanner"/>
+                </Key>
+                <Property Name="CapacityResponsiblePlanner" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CapacityResponsiblePlanner_Text" sap:label="Kapazitätsplaner" sap:quickinfo="Verantwortliche Kapazitätsplanergruppe"/>
+                <Property Name="CapacityResponsiblePlanner_Text" Type="Edm.String" MaxLength="20" sap:label="Name der verantw. Kapazitätsplanergruppe" sap:quickinfo="Name der verantwortlichen Kapazitätsplanergruppe" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_Customer_VHType" sap:label="Kunde" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Customer"/>
+                </Key>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="CustomerName" sap:label="Debitor" sap:quickinfo="Debitorennummer"/>
+                <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="35" sap:label="Name 1"/>
+                <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="35" sap:label="Name 2"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Land/Region" sap:quickinfo="Länder-/Regionenschlüssel"/>
+                <Property Name="CityName" Type="Edm.String" MaxLength="35" sap:label="Ort"/>
+                <Property Name="StreetName" Type="Edm.String" MaxLength="35" sap:label="Straße" sap:quickinfo="Straße und Hausnummer"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postleitzahl"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="80" sap:label="Kundenname" sap:quickinfo="Name des Kunden"/>
+                <Property Name="CustomerAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Kontengruppe" sap:quickinfo="Kontengruppe Debitor"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Berechtigung" sap:quickinfo="Berechtigungsgruppe"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Kennzeichen: Verwendungszweck erfüllt" sap:quickinfo="Kennzeichen für erfüllten Geschäftszweck"/>
+                <Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Wettbewerber" sap:quickinfo="Kennzeichen: Wettbewerber"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Geschäftspartner" sap:quickinfo="Geschäftspartnernummer"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Geschäftspartnerart"/>
+            </EntityType>
+            <EntityType Name="I_FactoryCalendarType" sap:label="Fabrikkalender" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FactoryCalendar"/>
+                </Key>
+                <Property Name="FactoryCalendar" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="FactoryCalendar_Text" sap:label="Fabrikkalender" sap:quickinfo="Fabrikkalender-ID"/>
+                <Property Name="FactoryCalendar_Text" Type="Edm.String" MaxLength="60" sap:label="Kalendername" sap:quickinfo="Fabrikkalendertext" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PublicHolidayCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Feiertagskalender-ID" sap:quickinfo="Feiertagskalender"/>
+                <Property Name="ValidityStartYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Gültigkeitsstartjahr"/>
+                <Property Name="ValidityEndYear" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Gültigkeitsendjahr"/>
+                <Property Name="CreationDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Angelegt am" sap:quickinfo="Datum, an dem der Satz hinzugefügt wurde"/>
+                <Property Name="CreationTime" Type="Edm.Time" Precision="0" sap:label="Uhrzeit" sap:quickinfo="Erfassungszeit"/>
+                <Property Name="MondayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Montag ist Arbeitstag" sap:quickinfo="Kennzeichen: Montag ist Arbeitstag"/>
+                <Property Name="TuesdayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Dienstag ist Arbeitstag" sap:quickinfo="Kennzeichen: Dienstag ist Arbeitstag"/>
+                <Property Name="WednesdayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Mittwoch ist Arbeitstag" sap:quickinfo="Kennzeichen: Mittwoch ist Arbeitstag"/>
+                <Property Name="ThursdayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Donnerstag ist Arbeitstag" sap:quickinfo="Kennzeichzen: Donnerstag ist Arbeitstag"/>
+                <Property Name="FridayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Freitag ist Arbeitstag" sap:quickinfo="Kennzeichen: Freitag ist Arbeitstag"/>
+                <Property Name="SaturdayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Samstag ist Arbeitstag" sap:quickinfo="Kennzeichen: Samstag ist Arbeitstag"/>
+                <Property Name="SundayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sonntag ist Arbeitstag" sap:quickinfo="Kennzeichen: Sonntag ist Arbeitstag"/>
+                <Property Name="HolidayIsWorkingDay" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Feiertag ist Arbeitstag" sap:quickinfo="Kennzeichen: Feiertag ist Arbeitstag"/>
+                <Property Name="FactoryCalendarStartDayValue" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Nr.1.Arbeitstag" sap:quickinfo="Beginn der Numerierung der Fabrikkalendertage"/>
+                <Property Name="LastChangeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Letzte Änderung" sap:quickinfo="Datum der letzten Änderung"/>
+                <Property Name="LastChangeTime" Type="Edm.Time" Precision="0" sap:label="Änderungszeit" sap:quickinfo="Kalender: Erstell- oder Änderungszeit"/>
+                <Property Name="FactoryCalSpclRulesAreExisting" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Fabrikkalender-Sonderregeln vorhanden" sap:quickinfo="Kennzeichen: Fabrikkalender-Sonderregeln vorhanden"/>
+            </EntityType>
+            <EntityType Name="I_PlantType" sap:label="Werk" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="PlantName" sap:label="Werk"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Name des Werks"/>
+                <Property Name="ValuationArea" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Bewertungskreis"/>
+                <Property Name="PlantCustomer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Kundennummer Werk" sap:quickinfo="Kundennummer des Werks" sap:value-list="standard"/>
+                <Property Name="PlantSupplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="LiefntNr. Werk" sap:quickinfo="Lieferantennummer des Werks" sap:value-list="standard"/>
+                <Property Name="FactoryCalendar" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Fabrikkalender" sap:quickinfo="Schlüssel des Fabrikkalenders"/>
+                <Property Name="DefaultPurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="EinkOrganisation" sap:quickinfo="Einkaufsorganisation"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Verkaufsorganisation" sap:quickinfo="Verkaufsorganisation für interne Verrechnung"/>
+                <Property Name="AddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Adresse"/>
+                <Property Name="PlantCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Werkstyp"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="VertriebswegIV" sap:quickinfo="Vertriebsweg für interne Verrechnung"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="SparteInterneVerr" sap:quickinfo="Sparte für interne Verrechnung"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Sprachenschlüssel"/>
+                <Property Name="IsMarkedForArchiving" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Archivierungsvorm." sap:quickinfo="Zentrale Archivierungsvormerkung für Stammsatz"/>
+                <NavigationProperty Name="to_Address" Relationship="xJA41xWORKCENTER_CDS.assoc_6038730FDB68BB23A236C4E6A537C470" FromRole="FromRole_assoc_6038730FDB68BB23A236C4E6A537C470" ToRole="ToRole_assoc_6038730FDB68BB23A236C4E6A537C470"/>
+            </EntityType>
+            <EntityType Name="I_ShiftGroupingType" sap:label="Schichtgruppierungscode" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ShiftGrouping"/>
+                </Key>
+                <Property Name="ShiftGrouping" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:text="ShiftGrouping_Text" sap:label="Schichtgruppierung" sap:quickinfo="Gruppierung für Schichtdefinitionen und Schichtprogramme"/>
+                <Property Name="ShiftGrouping_Text" Type="Edm.String" MaxLength="20" sap:label="Bezeichnung" sap:quickinfo="Allgemeine Bezeichnung" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="I_Supplier_VHType" sap:label="Lieferant" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Supplier"/>
+                </Key>
+                <Property Name="Supplier" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="SupplierName" sap:label="Lieferant" sap:quickinfo="Kontonummer des Lieferanten bzw. Kreditors"/>
+                <Property Name="SupplierName" Type="Edm.String" MaxLength="35" sap:label="Bezeichnung" sap:quickinfo="Name des Lieferanten"/>
+                <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Berechtigung" sap:quickinfo="Berechtigungsgruppe"/>
+                <Property Name="SupplierAccountGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Kontengruppe" sap:quickinfo="Kontengruppe Kreditor"/>
+                <Property Name="IsBusinessPurposeCompleted" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Zweck erfüllt" sap:quickinfo="Kennzeichen für erfüllten Geschäftszweck"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Geschäftspartner" sap:quickinfo="Geschäftspartnernummer"/>
+                <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Geschäftspartnerart"/>
+            </EntityType>
+            <Association Name="assoc_1A491DDC247A6B5B69F2D308B91AC05D" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" Multiplicity="1" Role="FromRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D"/>
+                <End Type="xJA41xWORKCENTER_CDS.I_CapacityCategoryType" Multiplicity="1" Role="ToRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D">
+                        <PropertyRef Name="CapacityCategoryCode"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D">
+                        <PropertyRef Name="CapacityCategoryCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" Multiplicity="1" Role="FromRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA"/>
+                <End Type="xJA41xWORKCENTER_CDS.I_CapacityRespPlannerType" Multiplicity="0..1" Role="ToRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA">
+                        <PropertyRef Name="CapacityResponsiblePlanner"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA">
+                        <PropertyRef Name="CapacityResponsiblePlanner"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_547E6364F6DFEAE760C53818D883419F" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" Multiplicity="1" Role="FromRole_assoc_547E6364F6DFEAE760C53818D883419F"/>
+                <End Type="xJA41xWORKCENTER_CDS.I_FactoryCalendarType" Multiplicity="0..1" Role="ToRole_assoc_547E6364F6DFEAE760C53818D883419F"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_547E6364F6DFEAE760C53818D883419F">
+                        <PropertyRef Name="FactoryCalendar"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_547E6364F6DFEAE760C53818D883419F">
+                        <PropertyRef Name="FactoryCalendar"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_110C45A79C5EADA2E01509EF6424FB68" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" Multiplicity="1" Role="FromRole_assoc_110C45A79C5EADA2E01509EF6424FB68"/>
+                <End Type="xJA41xWORKCENTER_CDS.I_PlantType" Multiplicity="1" Role="ToRole_assoc_110C45A79C5EADA2E01509EF6424FB68"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_110C45A79C5EADA2E01509EF6424FB68">
+                        <PropertyRef Name="Plant"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_110C45A79C5EADA2E01509EF6424FB68">
+                        <PropertyRef Name="Plant"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_EE45532EAF8409F2815C0579AEDA8FE4" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" Multiplicity="1" Role="FromRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4"/>
+                <End Type="xJA41xWORKCENTER_CDS.I_ShiftGroupingType" Multiplicity="0..1" Role="ToRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4">
+                        <PropertyRef Name="ShiftGrouping"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4">
+                        <PropertyRef Name="ShiftGroup"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_94D7635D25F051B40B6B4548CBB7700C" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkCenterType" Multiplicity="1" Role="FromRole_assoc_94D7635D25F051B40B6B4548CBB7700C"/>
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" Multiplicity="1" Role="ToRole_assoc_94D7635D25F051B40B6B4548CBB7700C"/>
+            </Association>
+            <Association Name="assoc_F1DC3A215994D29F696915981E999EA2" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWorkCenterType" Multiplicity="1" Role="FromRole_assoc_F1DC3A215994D29F696915981E999EA2"/>
+                <End Type="xJA41xWORKCENTER_CDS.xJA41xWC_WITH_SHIFT_FOR_TODAYType" Multiplicity="*" Role="ToRole_assoc_F1DC3A215994D29F696915981E999EA2"/>
+            </Association>
+            <Association Name="assoc_6038730FDB68BB23A236C4E6A537C470" sap:content-version="1">
+                <End Type="xJA41xWORKCENTER_CDS.I_PlantType" Multiplicity="1" Role="FromRole_assoc_6038730FDB68BB23A236C4E6A537C470"/>
+                <End Type="xJA41xWORKCENTER_CDS.I_AddressType" Multiplicity="0..1" Role="ToRole_assoc_6038730FDB68BB23A236C4E6A537C470"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_6038730FDB68BB23A236C4E6A537C470">
+                        <PropertyRef Name="AddressID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_6038730FDB68BB23A236C4E6A537C470">
+                        <PropertyRef Name="AddressID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="xJA41xWORKCENTER_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xJA41xWC_WITH_SHIFT_FOR_TODAY" EntityType="xJA41xWORKCENTER_CDS.xJA41xWC_WITH_SHIFT_FOR_TODAYType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xJA41xWorkCenter" EntityType="xJA41xWORKCENTER_CDS.xJA41xWorkCenterType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="xJA41xWorkcenter_Std_Capa" EntityType="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="I_Address" EntityType="xJA41xWORKCENTER_CDS.I_AddressType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="I_CapacityCategory" EntityType="xJA41xWORKCENTER_CDS.I_CapacityCategoryType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_CapacityRespPlanner" EntityType="xJA41xWORKCENTER_CDS.I_CapacityRespPlannerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Customer_VH" EntityType="xJA41xWORKCENTER_CDS.I_Customer_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_FactoryCalendar" EntityType="xJA41xWORKCENTER_CDS.I_FactoryCalendarType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Plant" EntityType="xJA41xWORKCENTER_CDS.I_PlantType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_ShiftGrouping" EntityType="xJA41xWORKCENTER_CDS.I_ShiftGroupingType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Supplier_VH" EntityType="xJA41xWORKCENTER_CDS.I_Supplier_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA" Association="xJA41xWORKCENTER_CDS.assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkcenter_Std_Capa" Role="FromRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA"/>
+                    <End EntitySet="I_CapacityRespPlanner" Role="ToRole_assoc_F1BE0CB4A92AB925D12B3C9AE7C9C3DA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_547E6364F6DFEAE760C53818D883419F" Association="xJA41xWORKCENTER_CDS.assoc_547E6364F6DFEAE760C53818D883419F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkcenter_Std_Capa" Role="FromRole_assoc_547E6364F6DFEAE760C53818D883419F"/>
+                    <End EntitySet="I_FactoryCalendar" Role="ToRole_assoc_547E6364F6DFEAE760C53818D883419F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_94D7635D25F051B40B6B4548CBB7700C" Association="xJA41xWORKCENTER_CDS.assoc_94D7635D25F051B40B6B4548CBB7700C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkCenter" Role="FromRole_assoc_94D7635D25F051B40B6B4548CBB7700C"/>
+                    <End EntitySet="xJA41xWorkcenter_Std_Capa" Role="ToRole_assoc_94D7635D25F051B40B6B4548CBB7700C"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1A491DDC247A6B5B69F2D308B91AC05D" Association="xJA41xWORKCENTER_CDS.assoc_1A491DDC247A6B5B69F2D308B91AC05D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkcenter_Std_Capa" Role="FromRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D"/>
+                    <End EntitySet="I_CapacityCategory" Role="ToRole_assoc_1A491DDC247A6B5B69F2D308B91AC05D"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F1DC3A215994D29F696915981E999EA2" Association="xJA41xWORKCENTER_CDS.assoc_F1DC3A215994D29F696915981E999EA2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkCenter" Role="FromRole_assoc_F1DC3A215994D29F696915981E999EA2"/>
+                    <End EntitySet="xJA41xWC_WITH_SHIFT_FOR_TODAY" Role="ToRole_assoc_F1DC3A215994D29F696915981E999EA2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6038730FDB68BB23A236C4E6A537C470" Association="xJA41xWORKCENTER_CDS.assoc_6038730FDB68BB23A236C4E6A537C470" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="I_Plant" Role="FromRole_assoc_6038730FDB68BB23A236C4E6A537C470"/>
+                    <End EntitySet="I_Address" Role="ToRole_assoc_6038730FDB68BB23A236C4E6A537C470"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_EE45532EAF8409F2815C0579AEDA8FE4" Association="xJA41xWORKCENTER_CDS.assoc_EE45532EAF8409F2815C0579AEDA8FE4" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkcenter_Std_Capa" Role="FromRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4"/>
+                    <End EntitySet="I_ShiftGrouping" Role="ToRole_assoc_EE45532EAF8409F2815C0579AEDA8FE4"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_110C45A79C5EADA2E01509EF6424FB68" Association="xJA41xWORKCENTER_CDS.assoc_110C45A79C5EADA2E01509EF6424FB68" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="xJA41xWorkcenter_Std_Capa" Role="FromRole_assoc_110C45A79C5EADA2E01509EF6424FB68"/>
+                    <End EntitySet="I_Plant" Role="ToRole_assoc_110C45A79C5EADA2E01509EF6424FB68"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType/ShiftGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Shift Grouping Code"/>
+                        <PropertyValue Property="CollectionPath" String="I_ShiftGrouping"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="ShiftGroup"/>
+                                    <PropertyValue Property="ValueListProperty" String="ShiftGrouping"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ShiftGrouping_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType/Plant" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Plant"/>
+                        <PropertyValue Property="CollectionPath" String="I_Plant"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType/CapacityCategoryCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Capacity Category"/>
+                        <PropertyValue Property="CollectionPath" String="I_CapacityCategory"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CapacityCategoryCode"/>
+                                    <PropertyValue Property="ValueListProperty" String="CapacityCategoryCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CapacityCategoryCode_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType/CapacityResponsiblePlanner" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Capacity Responsible Planner"/>
+                        <PropertyValue Property="CollectionPath" String="I_CapacityRespPlanner"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CapacityResponsiblePlanner"/>
+                                    <PropertyValue Property="ValueListProperty" String="CapacityResponsiblePlanner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CapacityResponsiblePlanner_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWorkcenter_Std_CapaType/FactoryCalendar" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Factory Calendar"/>
+                        <PropertyValue Property="CollectionPath" String="I_FactoryCalendar"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="FactoryCalendar"/>
+                                    <PropertyValue Property="ValueListProperty" String="FactoryCalendar"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="FactoryCalendar_Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.I_PlantType/PlantCustomer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Customer"/>
+                        <PropertyValue Property="CollectionPath" String="I_Customer_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PlantCustomer"/>
+                                    <PropertyValue Property="ValueListProperty" String="Customer"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName1"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="OrganizationBPName2"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Country"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CityName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="StreetName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PostalCode"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CustomerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerType"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.I_PlantType/PlantSupplier" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Supplier"/>
+                        <PropertyValue Property="CollectionPath" String="I_Supplier_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PlantSupplier"/>
+                                    <PropertyValue Property="ValueListProperty" String="Supplier"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="SupplierName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartner"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="BusinessPartnerType"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWORKCENTER_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.I_FactoryCalendarType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>FactoryCalendar</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="xJA41xWORKCENTER_CDS.xJA41xWorkCenterType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>WorkCenter</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/ja41/WORKCENTER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://all-for-machine.all-for-one.com:1443/sap/opu/odata/ja41/WORKCENTER_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
